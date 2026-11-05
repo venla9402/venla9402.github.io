@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio · Vieno W. Wu</title>
+  <meta name="description" content="Projects and dashboards by Vieno W. Wu.">
+  <style>
+    :root {
+      --columbia: #B9D9EB;
+      --columbia-soft: #E8F3F9;
+      --navy: #0B2D5B;
+      --accent: #1D4F91;
+      --ink: #1F2A37;
+      --muted: #5B6675;
+      --line: #D9E4EC;
+      --card: #FFFFFF;
+      --bg: #F7FAFC;
+      --radius: 14px;
+      --shadow: 0 1px 2px rgba(11, 45, 91, .06), 0 6px 20px rgba(11, 45, 91, .06);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased;
+      min-height: 100vh; display: flex; flex-direction: column;
+    }
+    main { flex: 1; }
+    a { color: var(--accent); }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+    nav { position: sticky; top: 0; z-index: 10; background: rgba(255, 255, 255, .92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+    .brand { font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: .2px; white-space: nowrap; }
+    .links { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+    .links::-webkit-scrollbar { display: none; }
+    .links a { color: var(--muted); text-decoration: none; font-size: .93rem; font-weight: 500; padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: background .15s, color .15s; }
+    .links a:hover { color: var(--navy); background: var(--columbia-soft); }
+    .links a.active { color: var(--navy); background: var(--columbia); }
+
+    .intro { background: linear-gradient(160deg, var(--columbia-soft) 0%, #FFFFFF 70%); border-bottom: 1px solid var(--line); }
+    .intro .wrap { padding-top: 52px; padding-bottom: 40px; }
+    .eyebrow { margin: 0; font-size: .8rem; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--accent); }
+    h1 { margin: 2px 0 8px; font-size: clamp(2rem, 5vw, 2.6rem); line-height: 1.15; color: var(--navy); letter-spacing: -.5px; }
+    .intro p.lead { margin: 0; color: var(--muted); font-size: 1.05rem; max-width: 600px; }
+
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 40px 0 64px; }
+    .tile { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: transform .15s, box-shadow .15s; }
+    .tile:hover { transform: translateY(-2px); box-shadow: 0 2px 4px rgba(11, 45, 91, .08), 0 12px 28px rgba(11, 45, 91, .1); }
+    .thumb { height: 150px; background: linear-gradient(135deg, var(--navy) 0%, var(--accent) 60%, #4F86C6 100%); display: grid; place-items: center; }
+    .thumb svg { width: 230px; height: 96px; }
+    .tile-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .tile h2 { margin: 0; font-size: 1.15rem; color: var(--navy); }
+    .context { margin: 0; font-size: .88rem; font-weight: 600; color: var(--muted); }
+    .tile p.desc { margin: 0; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { font-size: .82rem; padding: 3px 10px; border-radius: 999px; background: var(--columbia-soft); color: var(--navy); border: 1px solid var(--columbia); }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 6px; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-weight: 600; font-size: .9rem; padding: 8px 15px; border-radius: 999px; border: 1px solid var(--navy); color: var(--navy); background: #fff; transition: background .15s, color .15s; }
+    .btn:hover { background: var(--navy); color: #fff; }
+    .btn.primary { background: var(--navy); color: #fff; }
+    .btn.primary:hover { background: var(--accent); border-color: var(--accent); }
+
+    footer { border-top: 1px solid var(--line); background: #fff; }
+    footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 24px 20px; font-size: .9rem; color: var(--muted); }
+    footer a { text-decoration: none; margin-left: 16px; }
+    footer a:first-child { margin-left: 0; }
+
+    @media (max-width: 760px) {
+      .brand { display: none; }
+      nav .wrap { justify-content: center; padding: 0 8px; }
+      .links { gap: 0; }
+      .links a { padding: 6px 7px; font-size: .84rem; }
+      .intro .wrap { padding-top: 36px; padding-bottom: 28px; }
+      .gallery { grid-template-columns: 1fr; padding-top: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Site">
+    <div class="wrap">
+      <a class="brand" href="index.html">Vieno W. Wu</a>
+      <div class="links">
+        <a href="index.html#education">Education</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="portfolio.html" class="active" aria-current="page">Portfolio</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="intro">
+    <div class="wrap">
+      <p class="eyebrow">Things I've built</p>
+      <h1>Portfolio</h1>
+      <p class="lead">Dashboards and analyses you can open and explore.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="gallery">
+
+        <article class="tile">
+          <div class="thumb" aria-hidden="true">
+            <svg viewBox="0 0 230 96" fill="none">
+              <rect x="6" y="56" width="22" height="34" rx="3" fill="#B9D9EB" opacity=".55"/>
+              <rect x="36" y="38" width="22" height="52" rx="3" fill="#B9D9EB" opacity=".7"/>
+              <rect x="66" y="20" width="22" height="70" rx="3" fill="#B9D9EB" opacity=".9"/>
+              <rect x="96" y="44" width="22" height="46" rx="3" fill="#B9D9EB" opacity=".7"/>
+              <polyline points="140,70 158,52 176,60 194,30 222,18" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="222" cy="18" r="5" fill="#FFFFFF"/>
+            </svg>
+          </div>
+          <div class="tile-body">
+            <h2>Café Analytics Dashboard</h2>
+            <p class="context">Staffing Analytics · Data Analyst Intern</p>
+            <p class="desc">An interactive dashboard built on two years of café POS orders, covering hour-by-hour demand, customer loyalty and spend patterns, and forecast-driven inventory planning.</p>
+            <div class="chips">
+              <span class="chip">Demand forecasting</span>
+              <span class="chip">Customer analytics</span>
+              <span class="chip">Inventory optimization</span>
+            </div>
+            <div class="actions">
+              <a class="btn primary" href="https://venla9402.github.io/Cafe-Demand-Forecasting/cafe_latest.html" target="_blank" rel="noopener">Open dashboard ↗</a>
+              <a class="btn" href="https://github.com/venla9402/Cafe-Demand-Forecasting" target="_blank" rel="noopener">View on GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Vieno W. Wu</span>
+      <span>
+        <a href="https://www.linkedin.com/in/vienow" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/venla9402" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:ww2773@columbia.edu">Email</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>
