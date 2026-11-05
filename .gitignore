@@ -1,0 +1,8 @@
+# Never published: notes and documents the agent may read but must not upload
+private/
+
+# The CV PDF lists a phone number, which AGENTS.md says never to publish
+cv.pdf
+
+# macOS clutter
+.DS_Store

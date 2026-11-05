@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vieno W. Wu · Business Analytics</title>
+  <meta name="description" content="Vieno W. Wu: M.S. Business Analytics at Columbia University. Data analytics, forecasting, dashboards and machine learning.">
+  <style>
+    :root {
+      --columbia: #B9D9EB;
+      --columbia-soft: #E8F3F9;
+      --navy: #0B2D5B;
+      --accent: #1D4F91;
+      --ink: #1F2A37;
+      --muted: #5B6675;
+      --line: #D9E4EC;
+      --card: #FFFFFF;
+      --bg: #F7FAFC;
+      --radius: 14px;
+      --shadow: 0 1px 2px rgba(11, 45, 91, .06), 0 6px 20px rgba(11, 45, 91, .06);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+    /* ---------- Sticky nav ---------- */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+    .brand { font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: .2px; white-space: nowrap; }
+    .links { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+    .links::-webkit-scrollbar { display: none; }
+    .links a {
+      color: var(--muted); text-decoration: none; font-size: .93rem; font-weight: 500;
+      padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: background .15s, color .15s;
+    }
+    .links a:hover { color: var(--navy); background: var(--columbia-soft); }
+    .links a.active { color: var(--navy); background: var(--columbia); }
+
+    /* ---------- Hero ---------- */
+    header.hero {
+      background: linear-gradient(160deg, var(--columbia-soft) 0%, #FFFFFF 70%);
+      border-bottom: 1px solid var(--line);
+    }
+    .hero .wrap { display: grid; grid-template-columns: 220px 1fr; gap: 44px; align-items: center; padding-top: 64px; padding-bottom: 56px; }
+    .hero img {
+      width: 220px; height: 220px; border-radius: 50%; object-fit: cover;
+      border: 6px solid #fff; box-shadow: 0 0 0 3px var(--columbia), var(--shadow);
+    }
+    .hello { margin: 0; color: var(--accent); font-weight: 600; }
+    .hero h1 { margin: 2px 0 10px; font-size: clamp(2.1rem, 5vw, 3rem); line-height: 1.1; color: var(--navy); letter-spacing: -.5px; }
+    .tagline { margin: 0 0 22px; font-size: 1.1rem; color: var(--muted); max-width: 560px; }
+    .contact { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600; font-size: .93rem;
+      padding: 9px 16px; border-radius: 999px; border: 1px solid var(--navy); color: var(--navy); background: #fff;
+      transition: background .15s, color .15s;
+    }
+    .btn:hover { background: var(--navy); color: #fff; }
+    .btn.primary { background: var(--navy); color: #fff; }
+    .btn.primary:hover { background: var(--accent); border-color: var(--accent); }
+    .btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* ---------- Sections ---------- */
+    section { padding: 56px 0 8px; }
+    section:last-of-type { padding-bottom: 64px; }
+    .eyebrow { margin: 0; font-size: .8rem; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--accent); }
+    h2 { margin: 2px 0 22px; font-size: 1.75rem; color: var(--navy); letter-spacing: -.3px; }
+    .grid { display: grid; gap: 18px; }
+    .grid.two { grid-template-columns: repeat(2, 1fr); }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 22px 24px; box-shadow: var(--shadow);
+    }
+    .card h3 { margin: 0; font-size: 1.1rem; color: var(--navy); }
+    .role { margin: 2px 0 0; font-weight: 600; color: var(--ink); }
+    .meta { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 6px; font-size: .88rem; color: var(--muted); }
+    .meta span::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 6px; border-radius: 50%; background: var(--columbia); vertical-align: middle; }
+    .card ul { margin: 14px 0 0; padding-left: 18px; }
+    .card li { margin: 6px 0; }
+    .card li::marker { color: var(--accent); }
+
+    .job { display: grid; grid-template-columns: 4px 1fr; gap: 20px; padding-left: 0; }
+    .job::before { content: ""; border-radius: 4px; background: var(--columbia); }
+    .job-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+    .dates { font-size: .85rem; font-weight: 600; color: var(--navy); background: var(--columbia-soft); padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+
+    .skills { grid-template-columns: repeat(2, 1fr); }
+    .skills h3 { font-size: 1rem; margin-bottom: 12px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { font-size: .86rem; padding: 4px 11px; border-radius: 999px; background: var(--columbia-soft); color: var(--navy); border: 1px solid var(--columbia); }
+
+    footer { border-top: 1px solid var(--line); background: #fff; }
+    footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 24px 20px; font-size: .9rem; color: var(--muted); }
+    footer a { text-decoration: none; margin-left: 16px; }
+    footer a:first-child { margin-left: 0; }
+
+    @media (max-width: 760px) {
+      .hero .wrap { grid-template-columns: 1fr; text-align: center; gap: 24px; padding-top: 40px; padding-bottom: 40px; }
+      .hero img { width: 160px; height: 160px; margin: 0 auto; }
+      .tagline { margin-left: auto; margin-right: auto; }
+      .contact { justify-content: center; }
+      .grid.two, .skills { grid-template-columns: 1fr; }
+      .job { grid-template-columns: 1fr; gap: 0; }
+      .job::before { display: none; }
+      .brand { display: none; }
+      nav .wrap { justify-content: center; padding: 0 8px; }
+      .links { gap: 0; }
+      .links a { padding: 6px 9px; font-size: .88rem; }
+      .card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Sections">
+    <div class="wrap">
+      <a class="brand" href="#top">Vieno W. Wu</a>
+      <div class="links">
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <img src="photo.jpg" alt="Portrait of Vieno W. Wu" width="220" height="220">
+      <div>
+        <p class="hello">Hi, I'm</p>
+        <h1>Vieno W. Wu</h1>
+        <p class="tagline">Business Analytics student at Columbia. I build dashboards, forecasts and machine-learning models that help teams make data-driven decisions.</p>
+        <div class="contact">
+          <a class="btn primary" href="https://www.linkedin.com/in/vienow" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn" href="https://github.com/venla9402" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3"/></svg>
+            GitHub
+          </a>
+          <a class="btn" href="mailto:ww2773@columbia.edu">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm10 8.4L2.4 6.5v.02L12 13l9.6-6.48v-.02L12 12.4z"/></svg>
+            ww2773@columbia.edu
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="education">
+      <div class="wrap">
+        <p class="eyebrow">Where I studied</p>
+        <h2>Education</h2>
+        <div class="grid two">
+          <article class="card">
+            <h3>Columbia University</h3>
+            <p class="role">Master of Science, Business Analytics</p>
+            <div class="meta"><span>New York, NY</span><span>Aug 2025 – Dec 2026</span></div>
+          </article>
+          <article class="card">
+            <h3>University of California, Los Angeles</h3>
+            <p class="role">Bachelor of Science, Applied Mathematics</p>
+            <div class="meta"><span>Los Angeles, CA</span><span>Sep 2021 – Mar 2025</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <p class="eyebrow">What I've done</p>
+        <h2>Experience</h2>
+        <div class="grid">
+
+          <article class="card job">
+            <div>
+              <div class="job-head">
+                <div>
+                  <h3>Hack The Box</h3>
+                  <p class="role">Data Analyst Intern</p>
+                  <div class="meta"><span>New York, NY</span></div>
+                </div>
+                <span class="dates">June 2026 – Sep 2026</span>
+              </div>
+              <ul>
+                <li>Built the retention analytics dashboard in Looker end-to-end (dbt, SQL, LookML) on an automated ETL pipeline (CRM→Snowflake→Looker), replacing manual spreadsheet analysis with a self-refreshing source of truth for KPIs like GRR, NRR, and churn across $54M in sales revenue.</li>
+                <li>Implemented data validation across the pipeline using dbt tests for grain uniqueness, referential integrity, and null handling, catching modeling errors before they reached executive dashboards.</li>
+                <li>Modeled account-level renewal churn risk in Python from ARR trajectory and engagement features, quantifying ARR at risk per quarter to prioritize accounts ahead of renewal.</li>
+                <li>Supported sales and customer success with ad-hoc SQL analysis and custom visualizations, translating open-ended business questions into specific cuts of ARR, retention, and account-level data, using AI coding assistants to speed turnaround while validating outputs against source data.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card job">
+            <div>
+              <div class="job-head">
+                <div>
+                  <h3>Staffing Analytics</h3>
+                  <p class="role">Data Analyst Intern</p>
+                  <div class="meta"><span>New York, NY</span></div>
+                </div>
+                <span class="dates">Jan 2026 – May 2026</span>
+              </div>
+              <ul>
+                <li>Identified a ∼$62K/year revenue opportunity for a cafe client through exploratory analysis of large-scale POS transaction data, which showed repeat customers drove 40% of revenue; recommended targeted bundle and discount offers built around their visit timing and item pairings to convert one-time buyers.</li>
+                <li>Developed and benchmarked demand forecasting models using Python, Ensemble Learning, and time-series baselines on large-scale POS data, engineering lag, rolling-window and seasonality features to improve forecast accuracy by ∼15%, projecting ∼$40K/year in cost savings from reduced waste and stockouts.</li>
+                <li>Built a forecast-driven inventory optimization model incorporating demand uncertainty, lead-time variability, service-level targets, and forecast-error distributions to generate dynamic reorder points and safety-stock recommendations.</li>
+                <li>Developed interactive Tableau decision-support dashboards integrating forecast outputs, inventory positions and replenishment recommendations, enabling operations teams to translate predictive insights into data-driven planning decisions.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card job">
+            <div>
+              <div class="job-head">
+                <div>
+                  <h3>Oriza Private Equity</h3>
+                  <p class="role">Business Analyst Intern</p>
+                  <div class="meta"><span>Suzhou, CN</span></div>
+                </div>
+                <span class="dates">Jun 2025 – Aug 2025</span>
+              </div>
+              <ul>
+                <li>Engineered Python and SQL data pipelines consolidating performance metrics across 57 portfolio companies in a $200M portfolio (10+ tech IPOs), improving data accuracy by 35%, and applied clustering to segment companies by growth potential and financial health.</li>
+                <li>Built Excel and Tableau KPI dashboards and presented insights to non-technical stakeholders in quarterly reviews, reducing investor reporting time by 50%.</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <p class="eyebrow">What I've built</p>
+        <h2>Projects</h2>
+        <article class="card">
+          <h3>ML &amp; GenAI Customer Churn Decision-Support System</h3>
+          <ul>
+            <li>Built a point-in-time feature pipeline on a ∼1M-subscriber music-streaming dataset, streaming 30 GB of listening logs through DuckDB in under 6 minutes and engineering 69 features.</li>
+            <li>Benchmarked logistic regression, LightGBM and XGBoost using 5-fold CV and a later-month test on 110K users. XGBoost reached 0.82 ROC-AUC overall and 0.76 on clean data (baseline: 0.68), with the top 20% of users capturing 57% of churners.</li>
+            <li>Built an LLM-powered multi-agent retention assistant using tool calling, RAG, and persistent memory, combining churn scores, SHAP drivers, and retention policies to generate grounded churn explanations and next-best-action recommendations.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <p class="eyebrow">What I work with</p>
+        <h2>Technical Skills</h2>
+        <div class="grid skills">
+          <div class="card">
+            <h3>Programming &amp; Tools</h3>
+            <div class="chips">
+              <span class="chip">SQL</span><span class="chip">Python (Pandas, NumPy, Scikit-learn, PyTorch)</span><span class="chip">R</span><span class="chip">Excel</span><span class="chip">Tableau</span><span class="chip">Power BI</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Data Platforms</h3>
+            <div class="chips">
+              <span class="chip">BigQuery</span><span class="chip">Snowflake</span><span class="chip">AWS S3</span><span class="chip">Databricks</span><span class="chip">Redshift</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Modeling &amp; Analytics</h3>
+            <div class="chips">
+              <span class="chip">A/B Testing</span><span class="chip">Diff-in-Diff</span><span class="chip">CUPED</span><span class="chip">PSM</span><span class="chip">Regression</span><span class="chip">Segmentation</span><span class="chip">SHAP</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Workflow, AI &amp; Automation</h3>
+            <div class="chips">
+              <span class="chip">dbt</span><span class="chip">PySpark</span><span class="chip">MLflow</span><span class="chip">Git</span><span class="chip">Jupyter Notebook</span><span class="chip">ChatGPT</span><span class="chip">Claude</span><span class="chip">Copilot</span><span class="chip">JIRA</span><span class="chip">Confluence</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Vieno W. Wu</span>
+      <span>
+        <a href="https://www.linkedin.com/in/vienow" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/venla9402" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:ww2773@columbia.edu">Email</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    // Highlight the nav link for the section currently on screen.
+    const links = document.querySelectorAll('.links a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    document.querySelectorAll('main section').forEach(s => observer.observe(s));
+  </script>
+</body>
+</html>
